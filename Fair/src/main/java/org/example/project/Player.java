@@ -1,7 +1,8 @@
 package org.example.project;
 
 import java.time.LocalDate;
-import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class Player {
@@ -9,8 +10,18 @@ public class Player {
     private String firstName;
     private String lastName;
     private LocalDate date;
+    public static Set<Player> set = new HashSet<>();
 
 
+    public Player(long id, String firstName, String lastName, LocalDate date) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.date = date;
+    }
+
+    public Player() {
+    }
 
     public void setId(long id) {
         this.id = id;
@@ -46,7 +57,7 @@ public class Player {
 
     @Override
     public String toString(){
-        return ("This is the full name of the player: " +firstName +" "+ lastName);
+        return (id+"  "+firstName+"  "+lastName+"  "+date + "\n");
     }
 
 

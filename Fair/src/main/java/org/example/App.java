@@ -1,16 +1,9 @@
 package org.example;
 
 import org.example.project.Player;
-
-import java.time.LocalDate;
-import java.util.HashSet;
+import org.example.project.PlayerService;
 import java.util.Scanner;
-import java.util.Set;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -21,19 +14,20 @@ public class App
         System.out.println("to add a player press 1");
         System.out.println("to print all players press 2");
         System.out.println("to exit press 3");
-        Set<Player> s = new HashSet<>();
+
         int num = myObj.nextInt();
         while (num != 3){
             if (num == 1) {
-
-
+                PlayerService.addPlayer();
             }
             else if (num == 2){
-                System.out.println(s);
+                System.out.println(Player.set);
             }
             else if (num == 3) {
-
+                System.out.println("Leave please!");
             }
+            System.out.println("Re-Enter the num");
+            num = myObj.nextInt();
         }
     }
 }

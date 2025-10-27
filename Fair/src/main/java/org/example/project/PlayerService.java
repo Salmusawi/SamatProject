@@ -6,21 +6,30 @@ import java.util.Scanner;
 
 public class PlayerService {
 
-    public static void addPlayer(long id , String firstName , String lastName, String Date){
+    public static void addPlayer(){
         Scanner myObj = new Scanner(System.in);
-        Player p1 = new Player();
-        System.out.println("write an id");
-        id = myObj.nextInt();
-        p1.setId(id);
-        System.out.println("write the first name:");
-        firstName = myObj.nextLine();
-        p1.setFirstName(firstName);
-        System.out.println("write the last name:");
-        lastName = myObj.nextLine();
-        p1.setLastName(lastName);
-        System.out.println("write the last name:");
+        long id = getHighestId();
+        System.out.println("Enter First Name:");
+        String f = myObj.nextLine();
+        System.out.println("Enter Last Name");
+        String l = myObj.nextLine();
+        System.out.println("Enter DOB:");
         String date = myObj.nextLine();
-        p1.setDate(LocalDate.parse(date));
+        Player player = new Player(id,f,l, LocalDate.parse(date));
+        Player.set.add(player);
+    }
 
+    private static long getHighestId(){
+        long newId = 1;
+        if (!Player.set.isEmpty()) {
+            long maxId = 0;
+            for (Player p : Player.set) {
+                if (p.getId() > maxId) {
+                    maxId = p.getId();
+                }
+            }
+            newId = maxId + 1;
+        }
+        return newId;
     }
 }
