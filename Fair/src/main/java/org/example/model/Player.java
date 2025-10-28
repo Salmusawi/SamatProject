@@ -1,8 +1,6 @@
-package org.example.project;
+package org.example.model;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 
 public class Player {
@@ -10,7 +8,7 @@ public class Player {
     private String firstName;
     private String lastName;
     private LocalDate date;
-    public static Set<Player> set = new HashSet<>();
+
 
 
     public Player(long id, String firstName, String lastName, LocalDate date) {
