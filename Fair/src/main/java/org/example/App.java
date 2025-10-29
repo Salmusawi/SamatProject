@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.service.PlayerService;
+import org.example.service.TeamService;
+
 import java.util.Scanner;
 
 public class App 
@@ -14,6 +16,8 @@ public class App
         System.out.println("to print all players press 2");
         System.out.println("to exit press 3");
         System.out.println("to delete press 4");
+        System.out.println("to add a team press 5");
+        System.out.println("to display all teams press 6");
 
 
         int num = myObj.nextInt();
@@ -31,6 +35,12 @@ public class App
                 System.out.println("Please enter the id of the player you hate");
                 long id = myObj.nextLong();
                 PlayerService.removeById(id);
+            }
+            else if (num == 5){
+                TeamService.addTeam();
+            }
+            else if (num == 6){
+                TeamService.print();
             }
             System.out.println("Re-Enter the num");
             num = myObj.nextInt();

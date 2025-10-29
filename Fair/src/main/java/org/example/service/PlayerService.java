@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class PlayerService {
-    private final static Set<Player> PlayerSet = new HashSet<>();
+    private final static Set<Player> playerSet = new HashSet<>();
 
     public static void addPlayer(){
         Scanner myObj = new Scanner(System.in);
@@ -31,7 +31,7 @@ public class PlayerService {
             player.setFirstName(f);
             player.setLastName(l);
             player.setDate(LocalDate.parse(date));
-            PlayerSet.add(player);
+            playerSet.add(player);
         }
         else{
             System.out.println("name is wrong bruh");
@@ -40,16 +40,16 @@ public class PlayerService {
 
     }
     public static void print(){
-        for (Player p: PlayerSet){
+        for (Player p: playerSet){
             System.out.println(p.getId() + "    "+p.getFirstName()+"    " + p.getLastName()+ "  "+ p.getDate() + "\n");
         }
     }
 
     private static long getHighestId(){
         long newId = 1;
-        if (!PlayerSet.isEmpty()) {
+        if (!playerSet.isEmpty()) {
             long maxId = 0;
-            for (Player p : PlayerSet) {
+            for (Player p : playerSet) {
                 if (p.getId() > maxId) {
                     maxId = p.getId();
                 }
@@ -60,11 +60,11 @@ public class PlayerService {
     }
 
     public static boolean removeById(long id){
-        return PlayerSet.remove(findById(id));
+        return playerSet.remove(findById(id));
     }
 
     private static Player findById(long id){
-        for(Player p : PlayerSet){
+        for(Player p : playerSet){
            if (p.getId() == id){
                return p;
            }
@@ -74,7 +74,7 @@ public class PlayerService {
 
     private static boolean nameValidator(String firstName, String lastName){
 
-        for(Player p: PlayerSet){
+        for(Player p: playerSet){
             String fullName = firstName +" "+ lastName;
             String playerFullName = p.getFirstName() + " "+p.getLastName();
             if (playerFullName.equalsIgnoreCase(fullName)){
